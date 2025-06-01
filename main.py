@@ -8,6 +8,10 @@ from sentence_transformers import SentenceTransformer
 
 data = pd.read_csv("customer.csv")
 
+# uncomment the line bellow to use nomic-embed-text-v2-moe
+# embed_model = SentenceTransformer("nomic-ai/nomic-embed-text-v2-moe", trust_remote_code=True, device="cuda")
+
+# comment the line below to use nomic-embed-text-v2-moe
 embed_model = SentenceTransformer("sentence-transformers/all-MiniLM-L6-v2", device="cuda")
 
 X = embed_model.encode(data["utterance"].tolist()) 
